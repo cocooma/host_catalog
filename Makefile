@@ -16,3 +16,4 @@ test:
 build:
 	@docker run --rm -v $(PWD):/usr/src/myapp -w /usr/src/myapp  -e CGO_ENABLED=0 golang:1.12 go build
 	@docker build --squash --no-cache -t host_catalog:latest -f Dockerfile .
+	@rm -rf host_catalog
