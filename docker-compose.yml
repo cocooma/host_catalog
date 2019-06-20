@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  postgresql:
+    image: circleci/postgres:latest
+    container_name: postgresql
+    ports:
+    - "5432:5432"
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
