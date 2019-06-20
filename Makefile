@@ -3,6 +3,8 @@
 SHELL = /bin/bash
 all: clean test
 
+all: test build
+
 clean:
 	@docker-compose rm -f postgresql
 
@@ -12,4 +14,5 @@ test:
 	@docker rm -f postgres
 
 build:
-	@docker run --rm -v $(PWD):/usr/src/myapp -w /usr/src/myapp  golang:1.12 go build
+	@docker run --rm -v $(PWD):/usr/src/myapp -w /usr/src/myapp  -e CGO_ENABLED=0 golang:1.12 go build
+	@docker build --squash --no-cache -t host_catalog:latest -f Dockerfile .
