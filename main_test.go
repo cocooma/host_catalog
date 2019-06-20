@@ -11,7 +11,7 @@ import (
 	"os"
 	"strconv"
 	"testing"
-	"."
+   "github.com/cocooma/host_catalog"
 )
 
 var a main.App
