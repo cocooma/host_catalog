@@ -137,8 +137,3 @@ APP_DB_NAME
 # curl -X DELETE http://127.0.0.1:8000/host/1
 {"result":"success"}%
 ```
-
-# To DO
-
-* K8S deployment manifest
-* Jenkinsfile

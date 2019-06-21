@@ -1,0 +1,49 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: host_catalog
+  namespace: apps
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        task: monitoring
+    spec:
+      serviceAccountName: apps
+      containers:
+        - name: host_catalog
+          image: host_catalog:latest
+          imagePullPolicy: Always
+          env:
+            - name: APP_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: key
+                  name: APP_DB_HOST
+            - name: APP_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: key
+                  name: APP_DB_USERNAME
+            - name: APP_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: key
+                  name: APP_DB_PASSWORD
+            - name: APP_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: key
+                  name: APP_DB_NAME
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            periodSeconds: 3
+            failureThreshold: 10
+
