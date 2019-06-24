@@ -1,5 +1,6 @@
-# Introduction to the Application
 
+Introduction to the Application
+------------------------------
 
 The application is a gRPC REST API server which expose endpoints to allow accessing and manipulating `host data`. <br/> 
 The operations that our endpoint will allow are:
