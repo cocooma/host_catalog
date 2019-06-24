@@ -52,6 +52,19 @@ const tableCreationQuery = `CREATE TABLE IF NOT EXISTS hosts
     CONSTRAINT hosts_pkey PRIMARY KEY (id)
 )`
 
+func TestHealthEndpoint(t *testing.T) {
+	clearTable()
+
+	req, _ := http.NewRequest("GET", "/health", nil)
+	response := executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, response.Code)
+
+	if body := response.Body.String(); body != `"{\"health\": true}"` {
+		t.Errorf("Expected Health Return. Got %s", body)
+	}
+}
+
 func TestEmptyTable(t *testing.T) {
 	clearTable()
 

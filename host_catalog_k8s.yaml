@@ -39,9 +39,10 @@ spec:
                   name: APP_DB_NAME
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 8000
               scheme: HTTP
+              code: 200
             initialDelaySeconds: 5
             timeoutSeconds: 2
             periodSeconds: 3

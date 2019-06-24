@@ -57,11 +57,16 @@ func (a *App) Run(addr string) {
 }
 
 func (a *App) initializeRoutes() {
+	a.Router.HandleFunc("/health", a.getHealth).Methods("GET")
 	a.Router.HandleFunc("/hosts", a.getHosts).Methods("GET")
 	a.Router.HandleFunc("/host", a.createHost).Methods("POST")
 	a.Router.HandleFunc("/host/{id:[0-9]+}", a.getHost).Methods("GET")
 	a.Router.HandleFunc("/host/{id:[0-9]+}", a.updateHost).Methods("PUT")
 	a.Router.HandleFunc("/host/{id:[0-9]+}", a.deleteHost).Methods("DELETE")
+}
+
+func (a *App) getHealth(w http.ResponseWriter, r *http.Request) {
+	respondWithJSON(w, http.StatusOK, `{"health": true}`)
 }
 
 func (a *App) getHosts(w http.ResponseWriter, r *http.Request) {

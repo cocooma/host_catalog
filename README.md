@@ -1,15 +1,16 @@
 # Introduction to the Application
 
 
-The application is a gRPC REST API server which expose endpoints to allow accessing and manipulating `host data`.<br/> 
+The application is a gRPC REST API server which expose endpoints to allow accessing and manipulating `host data`. <br/> 
 The operations that our endpoint will allow are:
-* Creating a new host,
-* Updating an existing host,
-* Deleting an existing host,
-* Fetching an existing host,
+* Creating a new host.
+* Updating an existing host.
+* Deleting an existing host.
+* Fetching an existing host.
 * Fetching a list of hots.
 
 ### API Specification
+* Application health check GET /health,
 * Create a new host in response to a valid POST request at /host,
 * Update a host in response to a valid PUT request at /host/{id},
 * Delete a host in response to a valid DELETE request at /host/{id},
