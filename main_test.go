@@ -60,7 +60,7 @@ func TestHealthEndpoint(t *testing.T) {
 
 	checkResponseCode(t, http.StatusOK, response.Code)
 
-	if body := response.Body.String(); body != `"{\"health\": true}"` {
+	if body := response.Body.String(); body != `{"health":"true"}` {
 		t.Errorf("Expected Health Return. Got %s", body)
 	}
 }

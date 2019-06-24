@@ -96,6 +96,13 @@ APP_DB_NAME
 ```
 
 ### The application in action
+### Health check url
+```
+curl -s  http://127.0.0.1:8000/health | jq .health
+{
+  "health": "true"
+}
+```
 #### Create a host entry 
 
 ```

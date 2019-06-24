@@ -66,7 +66,7 @@ func (a *App) initializeRoutes() {
 }
 
 func (a *App) getHealth(w http.ResponseWriter, r *http.Request) {
-	respondWithJSON(w, http.StatusOK, `{"health": true}`)
+	respondWithJSON(w, http.StatusOK, map[string]string{"health": "true"})
 }
 
 func (a *App) getHosts(w http.ResponseWriter, r *http.Request) {
